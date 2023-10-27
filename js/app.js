@@ -12,6 +12,15 @@ const searchHandler = (event) => {
     }
   });
 };
+const changeClass = (filter) => {
+  buttons.forEach((button) => {
+    if(button.dataset.filter===filter){
+        button.classList.add("selected")
+    }else{
+        button.classList.remove("selected")
+    }
+  });
+};
 const filterHandler = (event) => {
   const filter = event.target.dataset.filter;
   products.forEach((product) => {
@@ -24,6 +33,7 @@ const filterHandler = (event) => {
         : (product.style.display = "none");
     }
   });
+  changeClass(filter);
 };
 searchInput.addEventListener("keyup", searchHandler);
 buttons.forEach((button) => {
